@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "intlist.h"
+#include "intlist.cpp"
 
 using namespace std;
 
@@ -24,7 +24,7 @@ int main()
 
     Element e1, e2, e3;
     if(e1.next==NULL)
-    {   cout << "pierwszy ma nulla i wartosc" << e1.value << endl;
+    {   cout << "pierwszy ma nulla i wartosc " << e1.value << endl;
     }
     e3.value = 5;
     e3.next = NULL;
@@ -42,8 +42,8 @@ int main()
     cout << e1.value << ", " << list1.beg->value << endl;
     cout << e2.value << ", " << e1.next->value << ", " << list1.beg->next->value << endl;
     cout << e3.value << ", " << e2.next->value << ", " << e1.next->next->value << ", " << list1.beg->next->next->value << endl;
-    cout << "rozmiar klasy listy: " << sizeof(IntList) << endl;
-    cout << "rozmiar klasy elementu: " << sizeof(IntList) << endl;
+    //cout << "rozmiar klasy listy: " << sizeof(IntList) << endl;
+    //cout << "rozmiar klasy elementu: " << sizeof(IntList) << endl;
 
     e3.next = list1.create_el(115);   //-1 12 5 115
     e3.next->next = NULL;
@@ -95,13 +95,16 @@ int main()
 
     show_list(list1);
 
-    list1.add_lists(&list2);   //odjęcie od listy 1 listę 1
+    list1.add_lists(&list2);   //odjęcie od listy 1 listę 2
     show_list(list1);           //11  -11 18 -1 17 12 57 -5 112 -33 -30 -1
 
 
     list2.del_rep_el();
     show_list(list2);
 
+    IntList *tab_list[10] = {&list1, &list2};
+
+    cout << "QQQQQQQQQ" << endl;
     //cout << "Por:" << list1.compare(&list2) << endl;
 
     return 0;
